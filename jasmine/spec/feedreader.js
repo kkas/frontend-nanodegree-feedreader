@@ -102,11 +102,13 @@ $(function() {
 
     /* Write a new test suite named "New Feed Selection" */
     describe('New Feed Selection', function() {
-        var txtBefore;
+        var txtBefore,
+            headerTitleBefore;
 
         beforeEach(function(done) {
             loadFeed(0, function() {
                 txtBefore = $('.entry:first').text();
+                headerTitleBefore = $('.header-title').text();
                 done();
             });
         });
@@ -125,6 +127,16 @@ $(function() {
 
             loadFeed(1, function() {
                 expect(txtBefore).not.toBe($('.entry:first').text());
+                done();
+            });
+        });
+
+        /*
+         * (My additional test)
+         */
+        it('change the header title when a new feed is loaded', function(done) {
+            loadFeed(1, function() {
+                expect(headerTitleBefore).not.toBe($('.header-title').text());
                 done();
             });
         });
