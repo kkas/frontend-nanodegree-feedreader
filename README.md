@@ -12,10 +12,18 @@ Or
 
 ## My additional work
 
-### Added specs with explanations
+### Additional specs with explanations
+
+#### Tests for existing functionality
 
 * New Header Selection change the header title when a new feed is loaded
-  * This spec tests the existing functionality
+
+#### Tests for future functionality
+
+* Initial Entries have less or equals to the number of feeds that the user has selected
+  * This new feature will make the user able to select the number of the feeds to display at once
+* Initial Entries display errors when the API returned an error
+  * This new feature will display the error messages on the screen when the API returns an error.
 
 ## Why this Project?
 

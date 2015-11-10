@@ -98,6 +98,61 @@ $(function() {
                 done();
             }
         );
+
+        /*
+         * (My additional test)
+         * Test that ensures the number of the feed returned from the API is
+         * less than or equals to the number that the user has selected.
+         * This test ensures the functionality of building the parameters to
+         * the API call with the specified number.
+         * Though this test assumes that the API works correctly.
+         */
+        it('have less or equals to the number of feeds that the user has ' +
+            'selected', function(done) {
+            expect(numFeedsToDisplay).toBeDefined();
+            expect($('.feed').children().length).toBe(numFeedsToDisplay);
+            done();
+        });
+
+        /* (My additional test) */
+        describe('for handling API call errors', function() {
+            /*
+             * Insert a wrong name and a URL into allFeeds
+             */
+            beforeAll(function() {
+                allFeeds.push({
+                    name: 'Test',
+                    url: 'htttp://thisistest.com/'
+                });
+            });
+
+            /*
+             * Make a API call with the wrong URL to receive an error.
+             */
+            beforeEach(function(done) {
+                loadFeed(allFeeds.length - 1, function() {
+                    done();
+                });
+            });
+
+            /*
+             * Remove the name and the URL inserted for this test.
+             */
+            afterAll(function() {
+                allFeeds.pop();
+            });
+
+            /*
+             * Test that a error message is displayed in the div which
+             * has a 'error' class.
+             */
+            it('display an error message when the API returned an error',
+                function(done) {
+                    expect($('.error').text()).not.toBe('');
+                    done();
+                }
+            );
+        });
     });
 
     /* Write a new test suite named "New Feed Selection" */
