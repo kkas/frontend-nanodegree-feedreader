@@ -18,7 +18,7 @@ Or
 
 1. New Header Selection change the header title when a new feed is loaded
 
-#### Tests for future functionality
+#### Tests for future functionality (TDD)
 
 1. Initial Entries have less or equals to the number of feeds that the user has selected
   * This new feature will make the user able to select the number of the feeds to display at once
